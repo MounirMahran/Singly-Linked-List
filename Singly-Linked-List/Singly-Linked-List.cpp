@@ -36,6 +36,21 @@ Node* Find(Node* Head, int Value) {
     return NULL;
 }
 
+void InsertAfter(Node* PrevNode, int Value) {
+    if (PrevNode == NULL) {
+        cout << "Can not insert, node was not found" << endl;
+        return;
+    }
+    
+    Node* NewNode = new Node();
+
+    NewNode->Value = Value;
+    NewNode->Next = PrevNode->Next;
+    
+    PrevNode->Next = NewNode;
+}
+
+
 int main()
 {
    Node* Head = NULL;
@@ -50,8 +65,16 @@ int main()
     
 
    //Searching for a node
-   Node* NewNode = Find(Head, 4);
+   Node* Node = Find(Head, 4);
 
-   if (NewNode == NULL) cout << "Node was not found :-(" << endl;
+   if (Node == NULL) cout << "Node was not found :-(" << endl;
    else cout << "Node was found :-)" << endl;
+
+
+   //Insert after this node
+   InsertAfter(Node, 12);
+
+   //Print list
+   PrintList(Head);
+
 }
