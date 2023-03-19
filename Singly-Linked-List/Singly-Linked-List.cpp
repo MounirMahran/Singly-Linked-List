@@ -50,6 +50,27 @@ void InsertAfter(Node* PrevNode, int Value) {
     PrevNode->Next = NewNode;
 }
 
+void InsertAtEnd(Node*& Head, int Value) {
+    Node* NewNode = new Node();
+
+    NewNode->Value = Value;
+    NewNode->Next = NULL;
+
+    if (Head == NULL) {
+        Head = NewNode;
+        return;
+    }
+
+    Node* LastNode = Head;
+
+    while (LastNode->Next != NULL)
+    {
+        LastNode = LastNode->Next;
+    }
+
+    LastNode->Next = NewNode;
+
+}
 
 int main()
 {
@@ -77,4 +98,10 @@ int main()
    //Print list
    PrintList(Head);
 
+   cout << endl;
+   //Insert at end
+   InsertAtEnd(Head, 19);
+
+   //Print list
+   PrintList(Head);
 }
