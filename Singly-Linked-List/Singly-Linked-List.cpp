@@ -72,6 +72,31 @@ void InsertAtEnd(Node*& Head, int Value) {
 
 }
 
+void Delete(Node*& Head, int Value) {
+    if (Head == NULL) return;
+
+    Node* Current = Head, * Prev = Head;
+
+    if (Current->Value == Value) {
+        delete Current;
+        return;
+    }
+
+    while (Current->Value != Value) {
+        Prev = Current;
+        Current = Current->Next;
+    }
+
+    Prev->Next = Current->Next;
+
+    delete Current;
+
+
+
+
+
+}
+
 int main()
 {
    Node* Head = NULL;
@@ -101,6 +126,13 @@ int main()
    cout << endl;
    //Insert at end
    InsertAtEnd(Head, 19);
+
+   //Print list
+   PrintList(Head);
+
+   cout << endl;
+   //Delete
+   Delete(Head, 12);
 
    //Print list
    PrintList(Head);
