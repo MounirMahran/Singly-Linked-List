@@ -27,6 +27,15 @@ void InsertAtBeginning(Node*& Head, int Value) {
 
 }
 
+Node* Find(Node* Head, int Value) {
+    while (Head != NULL) {
+        if (Head->Value == Value) return Head;
+
+        Head = Head->Next;
+    }
+    return NULL;
+}
+
 int main()
 {
    Node* Head = NULL;
@@ -39,4 +48,10 @@ int main()
 
    PrintList(Head);
     
+
+   //Searching for a node
+   Node* NewNode = Find(Head, 4);
+
+   if (NewNode == NULL) cout << "Node was not found :-(" << endl;
+   else cout << "Node was found :-)" << endl;
 }
