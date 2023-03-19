@@ -97,6 +97,15 @@ void Delete(Node*& Head, int Value) {
 
 }
 
+void DeleteFirstNode(Node*& Head) {
+    if (Head == NULL) return;
+
+    Node* Current = Head;
+
+    Head = Current->Next;
+    delete Current;
+}
+
 int main()
 {
    Node* Head = NULL;
@@ -133,6 +142,13 @@ int main()
    cout << endl;
    //Delete
    Delete(Head, 12);
+
+   //Print list
+   PrintList(Head);
+
+   cout << endl;
+   //Delete first node
+   DeleteFirstNode(Head);
 
    //Print list
    PrintList(Head);
