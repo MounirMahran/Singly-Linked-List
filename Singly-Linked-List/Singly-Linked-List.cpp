@@ -91,10 +91,6 @@ void Delete(Node*& Head, int Value) {
 
     delete Current;
 
-
-
-
-
 }
 
 void DeleteFirstNode(Node*& Head) {
@@ -104,6 +100,27 @@ void DeleteFirstNode(Node*& Head) {
 
     Head = Current->Next;
     delete Current;
+}
+
+void DeleteLastNode(Node*& Head) {
+    if (Head == NULL) return;
+
+    Node* Current = Head, * Prev = Head;
+
+    if (Current->Next == NULL) {
+        delete Current;
+        return;
+    }
+
+    while (Current->Next != NULL) {
+        Prev = Current;
+        Current = Current->Next;
+    }
+
+    Prev->Next = NULL;
+
+    delete Current;
+
 }
 
 int main()
@@ -149,6 +166,13 @@ int main()
    cout << endl;
    //Delete first node
    DeleteFirstNode(Head);
+
+   //Print list
+   PrintList(Head);
+
+   cout << endl;
+   //Delete lasr node
+   DeleteLastNode(Head);
 
    //Print list
    PrintList(Head);
